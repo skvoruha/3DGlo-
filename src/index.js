@@ -1,5 +1,7 @@
-import one from './modules/one'
-import two from './modules/two'
-
-console.log(one);
-console.log(two);
+import timer from './modules/timer'
+import menu from './modules/menu'
+import modal from './modules/modal'
+// в идеале пеередаваемый аргумент должна быть в вызове
+timer('27 february 2022')
+menu()
+modal()
