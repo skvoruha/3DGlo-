@@ -32,12 +32,17 @@ const timer = (deadline) => {
   const updateClock = () =>{
     let getTime = getTimeRemaining()
 
-    timerHours.textContent = getTime.hours
-    timerMinutes.textContent = getTime.minutes
-    timerSeconds.textContent = getTime.seconds
+    timerHours.textContent = String(getTime.hours).padStart(2,'0')
+    timerMinutes.textContent = String(getTime.minutes).padStart(2,'0')
+    timerSeconds.textContent = String(getTime.seconds).padStart(2,'0')
     timerDays.textContent = getTime.days
     if (getTime.timeRemaining > 0) {
       setTimeout(updateClock, 1000)
+    } else {
+      timerHours.textContent = '00'
+      timerMinutes.textContent = '00'
+      timerSeconds.textContent = '00'
+      timerDays.textContent = 0
     }
   }
 
