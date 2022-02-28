@@ -5,8 +5,9 @@ const modal = () =>{
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
     const closeBtn = modal.querySelector('.popup-close')
+    const btnScroll = document.getElementById('btn-scroll')
     // индетификатор анимации
-    let idInterval
+    let idInterval,idScroll
     let count = 100
 
     buttons.forEach(btn => {
@@ -32,6 +33,21 @@ const modal = () =>{
     closeBtn.addEventListener('click', ()=>{
       modal.style.transform = 'translateX(100%)'
       modal.style.display = 'none'
+    })
+    btnScroll.addEventListener('click',(e)=>{
+      e.preventDefault()
+      // получаем высоту где находится наш экран
+      let top = document.documentElement.scrollTop
+      const scrollBottom = () =>{
+        top = top + 20
+        idScroll = requestAnimationFrame(scrollBottom)
+        document.documentElement.scrollTop = top
+        // если  top больше 850 то сбрасываем анимацию
+        if(top > 850) {
+          cancelAnimationFrame(idScroll)
+        }
+      }
+      scrollBottom()
     })
   }
 }
