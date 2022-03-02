@@ -33,7 +33,7 @@ const inputTel = document.querySelectorAll('input[type=tel]')
   });
 
   const allInput = document.querySelectorAll('input')
-  console.log(allInput);
+  // console.log(allInput);
   allInput.forEach(element => {
     element.addEventListener('blur', ()=>{
       test(element.value)
@@ -46,11 +46,11 @@ const inputTel = document.querySelectorAll('input[type=tel]')
     let str3 = str.replace(/[\s\-]+$/g, '');
     let str4 = str.replace(/\s{2,}/g, ' '); // Заменялись все символы, а нужно от двух. Заменялось на пустую строку, а надо на пробел
     let str5 = str.replace(/\-{2,}/g, '-'); // И то же самое для дефисов
-    console.log(str1);
-    console.log(str2);
-    console.log(str3);
-    console.log(str4);
-    console.log(str5);
+    // console.log(str1);
+    // console.log(str2);
+    // console.log(str3);
+    // console.log(str4);
+    // console.log(str5);
   }
 
 }
