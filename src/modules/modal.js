@@ -7,34 +7,35 @@ const modal = () =>{
     const closeBtn = modal.querySelector('.popup-close')
     const btnScroll = document.getElementById('btn-scroll')
     // индетификатор анимации
-    let idInterval,idScroll
+    let idInterval, idScroll
     let count = 100
 
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        modal.style.display = 'block'
 
-        const modalAnimation = () =>{
-          count = count -2
-          idInterval = requestAnimationFrame(modalAnimation)
-          if (count >= 0) {
-            // modal.style.left = count
-            modal.style.transform = 'translateX('+ count +'%)'
-          } else {
-            count = 100
-            cancelAnimationFrame(idInterval)
-          }
-        }
-        modalAnimation()
-
-      })
-    })
-
-    closeBtn.addEventListener('click', ()=>{
+    // функция анимации
+    const modalAnimation = () =>{
+      modal.style.display = 'block'
+      count = count -4
+      idInterval = requestAnimationFrame(modalAnimation)
+      if (count >= 0) {
+        // modal.style.left = count
+        modal.style.transform = 'translateX('+ count +'%)'
+      } else {
+        count = 100
+        cancelAnimationFrame(idInterval)
+      }
+    }
+    // функция закрытия анимации
+    const modalAnimationClose = () =>{
       modal.style.transform = 'translateX(100%)'
       modal.style.display = 'none'
+    }
+    // перебор кнопок nodelist
+    buttons.forEach(btn => {
+      btn.addEventListener('click', modalAnimation)
     })
-    btnScroll.addEventListener('click',(e)=>{
+
+    closeBtn.addEventListener('click', modalAnimationClose)
+      btnScroll.addEventListener('click',(e)=>{
       e.preventDefault()
       // получаем высоту где находится наш экран
       let top = document.documentElement.scrollTop

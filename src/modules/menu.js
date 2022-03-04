@@ -4,8 +4,13 @@ const menu = () =>{
   const closeBtn = menu.querySelector('.close-btn')
   const menuItems = menu.querySelectorAll('ul > li > a')
 
-  const handleMenu = () => {
+  const handleMenu = (e) => {
+    e.preventDefault()
     menu.classList.toggle('active-menu')
+    if (e.target.matches('ul > li > a')) {
+      let elmnt = document.querySelector(e.target.hash)
+      elmnt.scrollIntoView();
+    }
   }
   // передаём по клику нукцию handleMenu
   menuBtn.addEventListener('click', handleMenu)
