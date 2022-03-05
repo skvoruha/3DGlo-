@@ -19,9 +19,11 @@ const menu = () =>{
   // передаём по клику нукцию handleMenu
   menuBtn.addEventListener('click', handleMenu)
   closeBtn.addEventListener('click', handleMenu)
+
   for (let i = 0; i < menuItems.length -1;i++){
     menuItems[i].addEventListener('click', handleMenu)
   }
+
   menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu));
 }
 
