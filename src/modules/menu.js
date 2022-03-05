@@ -9,7 +9,11 @@ const menu = () =>{
     menu.classList.toggle('active-menu')
     if (e.target.matches('ul > li > a')) {
       let elmnt = document.querySelector(e.target.hash)
-      elmnt.scrollIntoView();
+      // elmnt.scrollIntoView();
+      elmnt.scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+      });
     }
   }
   // передаём по клику нукцию handleMenu
