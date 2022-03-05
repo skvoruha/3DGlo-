@@ -1,6 +1,4 @@
 const menu = () =>{
-  // кнопка для открытия меню
-  const menuBtn = document.querySelector('.menu')
   // само меню
   const menu = document.querySelector('menu')
 
@@ -17,17 +15,13 @@ const menu = () =>{
       });
     }
   }
-  // передаём по клику нукцию handleMenu
-  menuBtn.addEventListener('click', handleMenu)
-  // closeBtn.addEventListener('click', handleMenu)
 
-  menu.addEventListener('click', (e)=>{
+  document.addEventListener('click',(e)=>{
     // в e -> target  ищем classList -> conatins (проверяем есть ли во вложенномти элемент с таким классом )
-    if(e.target.classList.contains('close-btn')) {
+    if( e.target.closest('.close-btn') || !e.target.matches('menu') ||
+        e.target.matches('ul > li > a') ||  e.target.closest('.menu')) {
       handleMenu(e)
       // проверяем matches вложеннные теги и классы,
-    } else if (e.target.matches('ul > li > a')){
-      handleMenu(e)
     }
   })
 }
