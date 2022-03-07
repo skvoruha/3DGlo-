@@ -1,6 +1,5 @@
 const modal = () =>{
   const width = document.documentElement.clientWidth
-  if (width > 768) {
 
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
@@ -31,7 +30,11 @@ const modal = () =>{
     }
     // перебор кнопок nodelist
     buttons.forEach(btn => {
-      btn.addEventListener('click', modalAnimation)
+      btn.addEventListener('click', ()=>{
+        if (window.innerWidth > 767) {
+          modalAnimation()
+        }
+      })
     })
 
     closeBtn.addEventListener('click', modalAnimationClose)
@@ -51,6 +54,5 @@ const modal = () =>{
       scrollBottom()
     })
   }
-}
 
 export default modal
