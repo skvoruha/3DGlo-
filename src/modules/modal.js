@@ -31,7 +31,11 @@ const modal = () =>{
     }
     // перебор кнопок nodelist
     buttons.forEach(btn => {
-      btn.addEventListener('click', modalAnimation)
+      btn.addEventListener('click', ()=>{
+        if (window.innerWidth > 767) {
+          modalAnimation()
+        }
+      })
     })
 
     closeBtn.addEventListener('click', modalAnimationClose)
