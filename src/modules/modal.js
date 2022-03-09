@@ -4,7 +4,7 @@ const modal = () =>{
 
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
-    const closeBtn = modal.querySelector('.popup-close')
+    // const closeBtn = modal.querySelector('.popup-close')
     const btnScroll = document.getElementById('btn-scroll')
     // индетификатор анимации
     let idInterval, idScroll
@@ -24,16 +24,12 @@ const modal = () =>{
         cancelAnimationFrame(idInterval)
       }
     }
-    // функция закрытия анимации
-    const modalAnimationClose = () =>{
-      modal.style.transform = 'translateX(100%)'
-      modal.style.display = 'none'
-    }
     // перебор кнопок nodelist
     buttons.forEach(btn => {
       btn.addEventListener('click', ()=>{
         if (window.innerWidth > 767) {
           modalAnimation()
+<<<<<<< HEAD
         }
       })
     })
@@ -50,9 +46,16 @@ const modal = () =>{
         // если  top больше 850 то сбрасываем анимацию
         if(top > 850) {
           cancelAnimationFrame(idScroll)
+=======
+>>>>>>> lesson22-hard
         }
+      })
+    })
+    // закрытия анимациии
+    modal.addEventListener('click', (e)=>{
+      if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+        modal.style.display = 'none'
       }
-      scrollBottom()
     })
   }
 }

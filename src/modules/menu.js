@@ -1,30 +1,29 @@
 const menu = () =>{
-  const menuBtn = document.querySelector('.menu')
+  // само меню
   const menu = document.querySelector('menu')
-  const closeBtn = menu.querySelector('.close-btn')
-  const menuItems = menu.querySelectorAll('ul > li > a')
 
   const handleMenu = (e) => {
     e.preventDefault()
     menu.classList.toggle('active-menu')
     if (e.target.matches('ul > li > a')) {
+      // присваиванием href то есть ссылку к какому id перейти экрану
       let elmnt = document.querySelector(e.target.hash)
-      // elmnt.scrollIntoView();
+      // экран с настройками переходт к элементу по id
       elmnt.scrollIntoView({
         block: "start",
         behavior: "smooth"
       });
     }
   }
-  // передаём по клику нукцию handleMenu
-  menuBtn.addEventListener('click', handleMenu)
-  closeBtn.addEventListener('click', handleMenu)
 
-  for (let i = 0; i < menuItems.length -1;i++){
-    menuItems[i].addEventListener('click', handleMenu)
-  }
-
-  menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu));
+  document.addEventListener('click',(e)=>{
+    // в e -> target  ищем classList -> conatins (проверяем есть ли во вложенномти элемент с таким классом )
+    if( e.target.closest('.close-btn') || !e.target.matches('menu') ||
+        e.target.matches('ul > li > a') || (!e.target.closest('.active-menu') && menu.classList.contains('active-menu'))) {
+      handleMenu(e)
+      // проверяем matches вложеннные теги и классы,
+    }
+  })
 }
 
 export default menu
