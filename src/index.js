@@ -9,7 +9,7 @@ import calc from './modules/calc'
 
 // в идеале пеередаваемый аргумент должна быть в вызове
 // timer('28 february 2022')
-timer('24 march 2022')
+timer('14 march 2022')
 menu()
 modal()
 calcField()
