@@ -3,11 +3,30 @@
 const slider = () =>{
   const sliderBlock = document.getElementById('all-progects')
   const slides = document.querySelectorAll('.portfolio-item')
-  const dots = document.querySelectorAll('.dot')
+  const dotsWrapper = document.querySelector('.portfolio-dots')
+
   const timeInterval = 2000
   // dot-active
+  let dots = document.querySelectorAll('.dot')
   let currentSlide = 0
   let interval
+
+  const addDot = () =>{
+    for (let i = 0; i < slides.length; i++) {
+      let elem = document.createElement('li')
+
+      if (i == 0) {
+         elem.classList = 'dot dot-active'
+      } else {
+        elem.classList = 'dot'
+      }
+      dotsWrapper.append(elem)
+    }
+    dots = document.querySelectorAll('.dot')
+  }
+  // вызов функцции добавления dot
+  addDot()
+
 
   const prevSlide = (elems, index, strClass) =>{
     elems[index].classList.remove(strClass)
