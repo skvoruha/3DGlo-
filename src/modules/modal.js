@@ -1,3 +1,5 @@
+import {animate} from './helpers'
+
 const modal = () =>{
   const width = document.documentElement.clientWidth
   if (width > 768) {
@@ -13,6 +15,17 @@ const modal = () =>{
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         modal.style.display = 'block'
+
+        animate({
+          duration: 1000,
+          timing(timeFraction) {
+            return timeFraction;
+          },
+          draw(progress) {
+            // elem.style.width = progress * 100 + '%';
+            console.log(progress);
+          }
+        });
 
         const modalAnimation = () =>{
           count = count -4
