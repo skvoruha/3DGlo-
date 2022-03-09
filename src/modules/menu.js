@@ -19,7 +19,7 @@ const menu = () =>{
   document.addEventListener('click',(e)=>{
     // в e -> target  ищем classList -> conatins (проверяем есть ли во вложенномти элемент с таким классом )
     if( e.target.closest('.close-btn') || !e.target.matches('menu') ||
-        e.target.matches('ul > li > a') ||  e.target.closest('.menu')) {
+        e.target.matches('ul > li > a') || (!e.target.closest('.active-menu') && menu.classList.contains('active-menu'))) {
       handleMenu(e)
       // проверяем matches вложеннные теги и классы,
     }
