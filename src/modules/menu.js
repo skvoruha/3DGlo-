@@ -18,10 +18,14 @@ const menu = () =>{
 
   document.addEventListener('click',(e)=>{
     // в e -> target  ищем classList -> conatins (проверяем есть ли во вложенномти элемент с таким классом )
-    if( e.target.closest('.close-btn') || !e.target.matches('menu') ||
-        e.target.matches('ul > li > a') ||  e.target.closest('.menu')) {
+    console.log(!e.target.closest('.active-menu'));
+    console.log(menu.classList.contains('active-menu'));
+
+
+
+    if( e.target.closest('.close-btn') || e.target.matches('ul > li > a') ||
+    e.target.closest('.menu') || (!e.target.closest('.active-menu') && menu.classList.contains('active-menu'))) {
       handleMenu(e)
-      // проверяем matches вложеннные теги и классы,
     }
   })
 }
