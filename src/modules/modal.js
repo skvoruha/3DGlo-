@@ -6,31 +6,25 @@ const modal = () =>{
 
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
-    // const closeBtn = modal.querySelector('.popup-close')
-    const btnScroll = document.getElementById('btn-scroll')
-    // индетификатор анимации
-    let idInterval, idScroll
-    let count = 100
-
 
     // функция анимации
-    const modalAnimation = () =>{
-      modal.style.display = 'block'
-      count = count -4
-      idInterval = requestAnimationFrame(modalAnimation)
-      if (count >= 0) {
-        // modal.style.left = count
-        modal.style.transform = 'translateX('+ count +'%)'
-      } else {
-        count = 100
-        cancelAnimationFrame(idInterval)
-      }
-    }
     // перебор кнопок nodelist
     buttons.forEach(btn => {
       btn.addEventListener('click', ()=>{
         if (window.innerWidth > 767) {
-          modalAnimation()
+            animate({
+              duration: 500,
+              timing(timeFraction) {
+                return Math.pow(timeFraction, 3)
+              },
+              draw(progress) {
+                let num = (1 - +progress) * 100
+                console.log(num);
+                modal.style.display = 'block'
+                // elem.style.width = progress * 100 + '%';
+                modal.style.transform = 'translateX('+ num +'%)'
+              }
+            });
         }
       })
     })
