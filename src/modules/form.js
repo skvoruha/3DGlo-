@@ -33,6 +33,7 @@ const inputTel = document.querySelectorAll('input[type=tel]')
   });
 
   const allInput = document.querySelectorAll('input')
+
   allInput.forEach(element => {
     element.addEventListener('blur', ()=>{
       element.value = test(element.value)
