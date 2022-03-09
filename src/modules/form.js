@@ -14,13 +14,13 @@ const inputTel = document.querySelectorAll('input[type=tel]')
   });
 
   inputPlaceMessage.addEventListener('input', ()=>{
-    inputPlaceMessage.value = inputPlaceMessage.value.replace(/[^а-яё]/gi,'');
+    inputPlaceMessage.value = inputPlaceMessage.value.replace(/[^а-я-\s]/gi,'');
   })
 
 
   inputEmail.forEach(element => {
     element.addEventListener('input',() =>{
-      const replaceEmail = /[^a-z\_\-\@\.\!\~\*\']+/gi
+      const replaceEmail = /[^\w\s\_\-\@\.\!\~\*\']+/gi
       element.value = element.value.replace(replaceEmail, "")
     })
   });
