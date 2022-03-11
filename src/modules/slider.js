@@ -1,9 +1,18 @@
 // all-progects
 
-const slider = () =>{
-  const sliderBlock = document.getElementById('all-progects')
-  const slides = document.querySelectorAll('.portfolio-item')
-  const dotsWrapper = document.querySelector('.portfolio-dots')
+
+const slider = (allProgects,portfolioItem,portfolioDots) =>{
+  // проверка передаваемых значений
+  // подключить
+  if (!(allProgects && portfolioItem && portfolioDots)) return;
+
+  const sliderBlock = document.getElementById(allProgects)
+  const slides = document.querySelectorAll(portfolioItem)
+  const dotsWrapper = document.querySelector(portfolioDots)
+  //  проверяем элементы на пустые элементы и где nodelist проверям длину массива
+  if (!(sliderBlock && slides.length > 0 && dotsWrapper)) return;
+  // делаем значение по умолчнию для первого элемента
+  slides[0].classList = 'portfolio-item portfolio-item-active'
 
   const timeInterval = 2000
   // dot-active
@@ -14,7 +23,7 @@ const slider = () =>{
   const addDot = () =>{
     for (let i = 0; i < slides.length; i++) {
       let elem = document.createElement('li')
-
+      // даём значение по умолчнию 0 по индексу элементу
       if (i == 0) {
          elem.classList = 'dot dot-active'
       } else {

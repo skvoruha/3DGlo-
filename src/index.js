@@ -9,11 +9,13 @@ import calc from './modules/calc'
 
 // в идеале пеередаваемый аргумент должна быть в вызове
 // timer('28 february 2022')
-timer('14 march 2022')
+timer('24 march 2022')
 menu()
 modal()
 calcField()
 form()
 tabs()
-slider()
+// передаём id и классы в slider all-progect, - где находится сладер, .portfolio-item - ссами слайды,
+// .portfolio-dots - точки для переключения слайдов
+slider('all-progects','.portfolio-item','.portfolio-dots'  )
 calc(100)
