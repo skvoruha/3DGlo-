@@ -6,6 +6,7 @@ import form from './modules/form'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
 import calc from './modules/calc'
+import sendForm from './modules/sendForm'
 
 // в идеале пеередаваемый аргумент должна быть в вызове
 // timer('28 february 2022')
@@ -19,3 +20,12 @@ tabs()
 // .portfolio-dots - точки для переключения слайдов
 slider('all-progects','.portfolio-item','.portfolio-dots'  )
 calc(100)
+sendForm({
+  formId: 'form1',
+  someElem: [
+    {
+      type: 'block',
+      id:'total'
+    }
+  ]
+})
