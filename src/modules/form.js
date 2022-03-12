@@ -14,7 +14,8 @@ const inputTel = document.querySelectorAll('input[type=tel]')
   });
 
   inputPlaceMessage.addEventListener('input', ()=>{
-    inputPlaceMessage.value = inputPlaceMessage.value.replace(/[^а-я-\s]/gi,'');
+    // ПОЯснение все не латинские не буквы заменяем на пустую строку и не цифры
+    inputPlaceMessage.value = inputPlaceMessage.value.replace(/[^\W\d]+/gi,'');
   })
 
 

@@ -19,7 +19,6 @@ const modal = () =>{
               },
               draw(progress) {
                 let num = (1 - +progress) * 100
-                console.log(num);
                 modal.style.display = 'block'
                 // elem.style.width = progress * 100 + '%';
                 modal.style.transform = 'translateX('+ num +'%)'
