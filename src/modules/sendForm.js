@@ -1,9 +1,15 @@
 const sendForm = ({formId, someElem = []}) =>{
   const form = document.getElementById(formId)
   const statusBlock = document.createElement('div')
-  const loadText = 'Загрузка...'
-  const errorText = 'Ошибка'
-  const successText = 'Спасибо! Наш менеджер с вами свяжеться!'
+  const loadText = {
+    text:'Загрузка...',
+    color:'#ffff00'}
+  const errorText = {
+    text:'Ошибка',
+    color:'#ff0000'}
+  const successText = {
+    text:'Спасибо! Наш менеджер с вами свяжеться!',
+    color:'#19ff19'}
 
   const validate = (list) =>{
     let success = true
@@ -33,7 +39,9 @@ const sendForm = ({formId, someElem = []}) =>{
     const formData = new FormData(form)
     const formBody = {}
 
-    statusBlock.textContent = loadText
+    statusBlock.textContent = loadText.text
+    statusBlock.style.color = loadText.color
+
     form.append(statusBlock)
 
     formData.forEach((val , key) =>{
@@ -52,23 +60,30 @@ const sendForm = ({formId, someElem = []}) =>{
 
     })
 
-    console.log('submit');
 
     if (validate(formElements)) {
       sendData(formBody)
         .then(data =>{
-          statusBlock.textContent = successText
+
+          statusBlock.textContent = successText.text
+          statusBlock.style.color = successText.color
 
           formElements.forEach(input =>{
             input.value = ''
           })
         })
         .catch(error =>{
-          statusBlock.textContent = errorText
+          statusBlock.textContent = errorText.text
+          statusBlock.style.color = errorText.color
+        })
+        .finally(final=>{
+          setTimeout(() => statusBlock.textContent = '', 2000);
         })
     } else {
       alert('Данные не валидны')
     }
+
+
   }
   try {
     // проверяем наличие формы
