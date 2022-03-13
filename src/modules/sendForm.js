@@ -1,9 +1,12 @@
 const sendForm = ({formId, someElem = []}) =>{
   const form = document.getElementById(formId)
   const statusBlock = document.createElement('div')
+
   const loadText = 'Загрузка...'
   const errorText = 'Ошибка'
   const successText = 'Спасибо! Наш менеджер с вами свяжеться!'
+
+
 
   const validate = (list) =>{
     let success = true
@@ -34,6 +37,12 @@ const sendForm = ({formId, someElem = []}) =>{
     const formBody = {}
 
     statusBlock.textContent = loadText
+
+    // Меняем цвет для модального окна
+    if (formId === 'form3') {
+      statusBlock.style.color ='#fff'
+    }
+
     form.append(statusBlock)
 
     formData.forEach((val , key) =>{
