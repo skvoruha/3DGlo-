@@ -1,3 +1,4 @@
+import {animate} from './helpers'
 //  по умолчанию сделаем 100
 const calc = (price = 100) => {
 
@@ -33,7 +34,17 @@ const calc = (price = 100) => {
       totalValue = 0
     }
 
-    total.textContent = totalValue
+
+
+    animate({
+      duration: 500,
+      timing(timeFraction) {
+        return Math.pow(timeFraction, 3)
+      },
+      draw(progress) {
+        total.textContent = Math.round(totalValue * progress)
+      }
+    });
   }
 
   calcBlock.addEventListener('input', (e)=>{
