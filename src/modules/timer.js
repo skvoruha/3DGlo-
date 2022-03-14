@@ -31,11 +31,12 @@ const timer = (deadline) => {
   }
   const updateClock = () =>{
     let getTime = getTimeRemaining()
-
+    let nameDay = lastDigitToWord(getTime.days)
     timerHours.textContent = String(getTime.hours).padStart(2,'0')
     timerMinutes.textContent = String(getTime.minutes).padStart(2,'0')
     timerSeconds.textContent = String(getTime.seconds).padStart(2,'0')
-    timerDays.textContent = getTime.days
+    timerDays.textContent = `${getTime.days} ${nameDay}`
+
     if (getTime.timeRemaining > 0) {
       setTimeout(updateClock, 1000)
     } else {
@@ -43,6 +44,18 @@ const timer = (deadline) => {
       timerMinutes.textContent = '00'
       timerSeconds.textContent = '00'
       timerDays.textContent = 0
+    }
+  }
+  // пишет правильны окончания к слову день
+  const lastDigitToWord = (digit) => {
+    const lastFigure = parseInt(digit.toString().substr(digit.toString().length - 1, 1));
+    if (digit >= 11 && digit < 15) {
+      return 'Дней';
+    }
+    else {
+      if (lastFigure == 1) return 'день';
+      if (lastFigure > 1 && lastFigure < 5) return 'дня';
+      if (lastFigure == 0 || lastFigure >= 5) return 'дней';
     }
   }
 

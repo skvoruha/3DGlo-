@@ -1,39 +1,58 @@
 import {animate} from './helpers'
 
 const modal = () =>{
-  const width = document.documentElement.clientWidth
-  if (width > 768) {
 
-    const modal = document.querySelector('.popup')
-    const buttons = document.querySelectorAll('.popup-btn')
-
-    // функция анимации
-    // перебор кнопок nodelist
-    buttons.forEach(btn => {
-      btn.addEventListener('click', ()=>{
-        if (window.innerWidth > 767) {
-            animate({
-              duration: 500,
-              timing(timeFraction) {
-                return Math.pow(timeFraction, 3)
-              },
-              draw(progress) {
-                let num = (1 - +progress) * 100
-                modal.style.display = 'block'
-                // elem.style.width = progress * 100 + '%';
-                modal.style.transform = 'translateX('+ num +'%)'
-              }
-            });
-        }
-      })
-    })
-    // закрытия анимациии
-    modal.addEventListener('click', (e)=>{
-      if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
-        modal.style.display = 'none'
+  const btnScroll = document.getElementById('btn-scroll')
+  const modal = document.querySelector('.popup')
+  const buttons = document.querySelectorAll('.popup-btn')
+  // индетификатор анимации
+  let idScroll
+  // функция анимации
+  // перебор кнопок nodelist
+  buttons.forEach(btn => {
+    btn.addEventListener('click', ()=>{
+      if (window.innerWidth > 767) {
+          // body делаем hidden чтобы не работала прокрутка
+          document.body.style.overflow = 'hidden'
+          animate({
+            duration: 500,
+            timing(timeFraction) {
+              return Math.pow(timeFraction, 3)
+            },
+            draw(progress) {
+              let num = (1 - +progress) * 100
+              modal.style.display = 'block'
+              // elem.style.width = progress * 100 + '%';
+              modal.style.transform = 'translateX('+ num +'%)'
+            }
+          });
       }
     })
-  }
+  })
+  // закрытия анимациии
+  modal.addEventListener('click', (e)=>{
+    if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+      modal.style.display = 'none'
+      // убираем отмену прокрутки
+      document.body.style.overflow = ''
+    }
+  })
+
+  btnScroll.addEventListener('click',(e)=>{
+    e.preventDefault()
+    // получаем высоту где находится наш экран
+    let top = document.documentElement.scrollTop
+    const scrollBottom = () =>{
+      top = top + 20
+      idScroll = requestAnimationFrame(scrollBottom)
+      document.documentElement.scrollTop = top
+      // если  top больше 850 то сбрасываем анимацию
+      if(top > 850) {
+        cancelAnimationFrame(idScroll)
+      }
+    }
+    scrollBottom()
+  })
 }
 
 export default modal

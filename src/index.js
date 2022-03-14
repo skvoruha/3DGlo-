@@ -10,7 +10,7 @@ import sendForm from './modules/sendForm'
 
 // в идеале пеередаваемый аргумент должна быть в вызове
 // timer('28 february 2022')
-timer('24 march 2022')
+timer('25 march 2022')
 menu()
 modal()
 calcField()

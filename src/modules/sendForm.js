@@ -11,11 +11,14 @@ const sendForm = ({formId, someElem = []}) =>{
   const validate = (list) =>{
     let success = true
     // провреям в списке еси там не ни одного класа success то success равняем false
-    // list.forEach(input =>{
-    //   if (!input.classList.contains('success')) {
-    //     success = false
-    //   }
-    // })
+    list.forEach(input =>{
+      if (input.name == 'user_name' && input.value.length < 2) {
+          success = false
+      }
+      if (input.name == 'user_phone' && input.value.length < 6) {
+          success = false
+      }
+    })
 
     return success
   }
@@ -51,7 +54,8 @@ const sendForm = ({formId, someElem = []}) =>{
 
     someElem.forEach(elem =>{
       const element = document.getElementById(elem.id)
-      if (element) {
+      if (element && parseInt(element.textContent) > 0) {
+        console.log(element.textContent);
         if (elem.type === 'block') {
           formBody[elem.id] = element.textContent
         } else if (elem.type === 'input') {
@@ -60,8 +64,6 @@ const sendForm = ({formId, someElem = []}) =>{
       }
 
     })
-
-    console.log('submit');
 
     if (validate(formElements)) {
       sendData(formBody)
@@ -75,8 +77,12 @@ const sendForm = ({formId, someElem = []}) =>{
         .catch(error =>{
           statusBlock.textContent = errorText
         })
+        .finally(()=>{
+          setTimeout(() => statusBlock.textContent = '', 2000);
+        })
     } else {
       alert('Данные не валидны')
+      statusBlock.textContent = ''
     }
   }
   try {
