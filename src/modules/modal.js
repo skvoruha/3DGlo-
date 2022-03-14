@@ -11,9 +11,9 @@ const modal = () =>{
   // перебор кнопок nodelist
   buttons.forEach(btn => {
     btn.addEventListener('click', ()=>{
+
       if (window.innerWidth > 767) {
           // body делаем hidden чтобы не работала прокрутка
-          document.body.style.overflow = 'hidden'
           animate({
             duration: 500,
             timing(timeFraction) {
@@ -21,12 +21,13 @@ const modal = () =>{
             },
             draw(progress) {
               let num = (1 - +progress) * 100
-              modal.style.display = 'block'
               // elem.style.width = progress * 100 + '%';
               modal.style.transform = 'translateX('+ num +'%)'
             }
           });
-      }
+        }
+      modal.style.display = 'block'
+      document.body.style.overflow = 'hidden'
     })
   })
   // закрытия анимациии
