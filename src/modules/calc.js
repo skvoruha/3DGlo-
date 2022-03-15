@@ -36,13 +36,19 @@ const calc = (price = 100) => {
 
 
 
+    let previousNum = +total.textContent
     animate({
       duration: 500,
       timing(timeFraction) {
         return Math.pow(timeFraction, 3)
       },
       draw(progress) {
-        total.textContent = Math.round(totalValue * progress)
+        if (previousNum > 0) {
+          console.log(previousNum);
+          total.textContent = previousNum + Math.round((totalValue - previousNum) * progress)
+        } else {
+          total.textContent = Math.round(totalValue * progress)
+        }
       }
     });
   }
