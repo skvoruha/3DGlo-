@@ -80,7 +80,10 @@ const sendForm = ({formId, someElem = []}) =>{
         })
         .finally(()=>{
           setTimeout(() => statusBlock.textContent = '', 2000);
-          setTimeout(() => modal.style.display = 'none', 4000);
+          setTimeout(() => {
+          modal.style.display = 'none'
+          document.body.style.overflow = ''
+        }, 4000);
         })
     } else {
       alert('Данные не валидны')
