@@ -44,7 +44,6 @@ const calc = (price = 100) => {
       },
       draw(progress) {
         if (previousNum > 0) {
-          console.log(previousNum);
           total.textContent = previousNum + Math.round((totalValue - previousNum) * progress)
         } else {
           total.textContent = Math.round(totalValue * progress)
