@@ -28,6 +28,9 @@ const modal = () =>{
         }
       modal.style.display = 'block'
       document.body.style.overflow = 'hidden'
+      document.body.style.cssText = `
+      padding-right: 0 !important;`
+
     })
   })
   // закрытия анимациии
