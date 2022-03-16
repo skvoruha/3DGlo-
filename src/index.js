@@ -7,6 +7,8 @@ import tabs from './modules/tabs'
 import slider from './modules/slider'
 import calc from './modules/calc'
 import sendForm from './modules/sendForm'
+import maskPhone from './modules/phoneMask'
+
 
 // в идеале пеередаваемый аргумент должна быть в вызове
 // timer('28 february 2022')
@@ -43,3 +45,4 @@ sendForm({ formId: 'form3',
       id:'total'
     }
 ]})
+maskPhone('input[type=tel]')

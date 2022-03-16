@@ -1,5 +1,5 @@
-const form = () => {
 
+const form = () => {
 
 const allFormInput = document.querySelectorAll('input[type="text"]')
 const inputPlaceMessage = document.querySelector('input[placeholder="Ваше сообщение"]')
@@ -59,7 +59,6 @@ const allInput = document.querySelectorAll('input')
     return str
     // .toUpperCase() + other.toLowerCase());
   }
-
 
 }
 
